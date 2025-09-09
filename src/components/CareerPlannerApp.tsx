@@ -401,13 +401,6 @@ export default function CareerPlannerApp() {
     setPlanByKey(k, { ...plan, tasks: plan.tasks.filter((t) => t.id !== id) });
   };
 
-  const moveAllToNotStarted = (k: "A" | "B") => {
-    const plan = getPlan(k);
-    setPlanByKey(k, {
-      ...plan,
-      tasks: plan.tasks.map((t) => ({ ...t, status: "not_started" })),
-    });
-  };
 
   const addArtifact = (k: "A" | "B") => {
     const title = (document.getElementById(`art-title-${k}`) as HTMLInputElement)?.value?.trim();
@@ -503,7 +496,7 @@ export default function CareerPlannerApp() {
     });
 
     // Layout constants
-    const leftColWidth = 240; // px
+    const leftColWidth = 280; // px (wider to fit long task titles)
     const trackHeight = 28;   // px
 
     return (
@@ -849,7 +842,7 @@ export default function CareerPlannerApp() {
 
   /** ---------- Render ---------- */
   return (
-    <div className="p-6 max-w-5xl mx-auto space-y-6">
+    <div className="p-6 max-w-7xl mx-auto space-y-6">
       {/* Header */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
